@@ -9,11 +9,11 @@ import threading
 
 
 BOT_TOKEN = "8425242719:AAHTAviHj8N0-eraWv_gEknIIAxf099nAak"
-PORT = 8080
+PORT = 10000
 
 
 
-disp = Dispatcher()
+disp = Dispatcher(bot=Bot)
 app = FastAPI()
 
 
