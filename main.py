@@ -5,6 +5,8 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message
+import threading
+
 
 BOT_TOKEN = "8425242719:AAHTAviHj8N0-eraWv_gEknIIAxf099nAak"
 PORT = 8080
@@ -28,7 +30,10 @@ async def main():
     await disp.start_polling(bot)
 
 
+async def runner():
+    asyncio.run(main())
+    
+    
 if __name__ == "__main__":
-    result = asyncio.get_event_loop()
-    result.create_task(main())
-    uvicorn.run(app,host="0.0.0.0", port= PORT)
+    threading.Thread(target=runner).start()
+    uvicorn.run(app,host = "0.0.0.0", port=PORT)
